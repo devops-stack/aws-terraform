@@ -12,6 +12,7 @@ jobs:
           name: terraform apply
           command: |
             terraform init
+            terraform plan
 #            terraform apply -auto-approve
       - store_artifacts:
           path: terraform.tfstate
