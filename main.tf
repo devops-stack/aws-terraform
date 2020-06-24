@@ -1,18 +1,7 @@
-module "ec2_cluster" {
-  source                 = "terraform-aws-modules/ec2-instance/aws"
-  version                = "~> 2.0"
-
-  name                   = "my-cluster"
-  instance_count         = 1
-
-  ami                    = "ami-ebd02392"
-  instance_type          = "t2.micro"
-  key_name               = "user1"
-  vpc_security_group_ids = ["sg-12345678"]
-  subnet_id              = "subnet-eddcdzz4"
-
-  tags = {
-    Terraform   = "true"
-    Environment = "dev"
-  }
+provider "aws" {
+  region = "us-east-1"
+}
+resource "aws_instance" "MFI" {
+  ami = "ami-0b69ea66ff7391e80"
+  instance_type = "t2.micro"
 }
