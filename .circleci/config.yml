@@ -1,20 +1,17 @@
+version: 2
+
+references:
+
 base_image: &base_image hashicorp/terraform:light
-version: 2.1
-workflows:
-  plan:
-    jobs:
-      - terraform/init:
-          filters:
-            branches:
-              only:
-                - master
-      - terraform/plan:
-          requires:
-            - terraform/init
-      - approval:
-          requires:
-            - terraform/plan
-          type: approval
-      - terraform/apply:
-          requires:
-            - approval
+
+working_directory: &working_directory ~/project
+
+default_config: &default_config
+  docker:
+    - image: *base_image
+  working_directory: *working_directory
+  environment:
+    BASH_ENV: /root/.bashrc
+    TERRAFORM_ENV: ~/project/
+
+repo_cache_key: &repo_cache_key v1-repo-{{ .Branch }}-{{ .Revision }}
