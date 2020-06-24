@@ -15,3 +15,16 @@ default_config: &default_config
     TERRAFORM_ENV: ~/project/
 
 repo_cache_key: &repo_cache_key v1-repo-{{ .Branch }}-{{ .Revision }}
+
+# Step to restore repository from cache
+restore_repo: &restore_repo
+  restore_cache:
+    key: *repo_cache_key
+
+save_repo: &save_repo
+  save_cache:
+    key: *repo_cache_key
+    paths:
+      - *working_directory
+      
+      
