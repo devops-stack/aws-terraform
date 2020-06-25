@@ -4,15 +4,15 @@ jobs:
     working_directory: ~/tmp
     docker:
             - image: hashicorp/terraform:light
- 
+   #         - image: ubuntu:18.04
+
     steps:
       - checkout
       - run:
           name: terraform apply
           command: |
             terraform init
- #          terraform plan
-
+#            terraform apply -auto-approve
       - store_artifacts:
           path: terraform.tfstate
 
@@ -20,14 +20,14 @@ jobs:
     working_directory: ~/tmp
     docker:
             - image: hashicorp/terraform:light
-
-  steps:
+#            - image: ubuntu:18.04
+    steps:
       - checkout
       - run:
           name: terraform destroy
           command: |
             terraform init
-            terraform destroy -auto-approve
+#            terraform destroy -auto-approve
 
 workflows:
   version: 2
