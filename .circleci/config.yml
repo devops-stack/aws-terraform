@@ -11,9 +11,12 @@ jobs:
       - run:
           name: terraform apply
           command: |
-            mkdir ~/.aws 
-            echo -e "[telesis81@mail.ru]\naws_access_key_id=$aws_access_key_id\naws_secret_access_key=$aws_secret_access_key\n" > ~/.aws/credentials
-            cat ~/.aws/credentials
+            export AWS_ACCESS_KEY_ID=$aws_access_key_id
+            export AWS_SECRET_ACCESS_KEY=$aws_secret_access_key
+
+#            mkdir ~/.aws 
+#            echo -e "[telesis81@mail.ru]\naws_access_key_id=$aws_access_key_id\naws_secret_access_key=$aws_secret_access_key\n" > ~/.aws/credentials
+#            cat ~/.aws/credentials
             terraform init
             terraform apply -auto-approve
       - store_artifacts:
