@@ -27,7 +27,7 @@ jobs:
           name: terraform destroy
           command: |
             terraform init
-#            terraform destroy -auto-approve
+            terraform destroy -auto-approve
 
 workflows:
   version: 2
