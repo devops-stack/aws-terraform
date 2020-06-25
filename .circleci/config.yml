@@ -11,7 +11,8 @@ jobs:
       - run:
           name: terraform apply
           command: |
-            sudo "mkdir ~/.aws echo -e "[default]\naws_access_key_id=$aws_access_key_id\naws_secret_access_key=$aws_secret_access_key\n" > ~/.aws/credentials"
+            mkdir ~/.aws 
+            #echo -e "[default]\naws_access_key_id=$aws_access_key_id\naws_secret_access_key=$aws_secret_access_key\n" > ~/.aws/credentials"
             terraform init
 #            terraform apply -auto-approve
       - store_artifacts:
